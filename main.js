@@ -16,15 +16,22 @@ class Player {
     constructor(name, marker) {
         this.name = name;
         this.marker = marker;
+        function sayName(name) {
+            console.log(name)
+        }
     }
 }
-
-const p1 = new Player('Player 1', "x")
+const p1 = new Player('Player 1', 'x')
 const p2 = new Player('Player 2', 'o')
-console.log(p1.marker)
 
 //alternating turns
+let currentPlayer = 1;
 
+function nextTurn() {
+    currentPlayer = 3 - currentPlayer;
+    console.log(`current player: Player ${currentPlayer}`);
+}
+console.log(`current player: Player ${currentPlayer}`);
 
 // determine outcome 
 
