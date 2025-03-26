@@ -1,4 +1,3 @@
-//Create gameboard
 function createGameBoard(rows, cols) {
     const board = [];
     for (let i= 0; i < rows; i++) {
@@ -13,9 +12,21 @@ function createGameBoard(rows, cols) {
 const gameBoard = createGameBoard(3, 3);
 console.log(gameBoard)
 
-//create players
+class Player {
+    constructor(name, marker) {
+        this.name = name;
+        this.marker = marker;
+    }
+}
 
-// determine outcome
+const p1 = new Player('Player 1', "x")
+const p2 = new Player('Player 2', 'o')
+console.log(p1.marker)
+
+//alternating turns
+
+
+// determine outcome 
 
 //display outcome
 
