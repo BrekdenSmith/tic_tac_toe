@@ -1,54 +1,51 @@
-//gives framework for gameboard
-function createGameBoard(rows, cols) {
-    const board = [];
-    for (let i= 0; i < rows; i++) {
-        board[i] = [];
-        for (let j= 0; j< cols; j++) {
-            board[i][j]= null;
-        }
-    } 
-    return board;  
+const cells = document.querySelectorAll(".cell");
+const statusText = document.querySelector("#statusText");
+const resetBtn = document.querySelector("#resetBtn");
+const winConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7]
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
+let options = ["","","","","","","","",""];
+let currentPlayer = "X";
+let running = false;
+
+initializeGame();
+
+function initializeGame() {
+    cells.forEach( cell => cell.addEventListener('click', cellClicked));
+    resetBtn.addEventListener('click', restartGame);
+   statusText.textContent = `${currentPlayer}'s turn`;
 }
 
-//creates the gameboard using previous function
-const gameBoard = createGameBoard(3, 3);
-console.log(gameBoard)
-
-class Player {
-    constructor(name, marker) {
-        this.name = name;
-        this.marker = marker;
+function cellClicked() {
+    const cellIndex = this.getAttribute('cellIndex')
+    if(options[cellIndex] != '' || !running) {
+        return;
     }
-}
-//create players 1 and 2 (p1,p2) [change names back to Player 1 and Player 2 when finished]
-const p1 = new Player('Max', 'x')
-const p2 = new Player('Ruby', 'o')
-
-//creates alternating turns
-let currentPlayer = 1;
-function nextTurn() {
-    currentPlayer = 3 - currentPlayer;
-    console.log(`current player: Player ${currentPlayer}`);
-}
-console.log(`current player: Player ${currentPlayer}`); //for removal at end
-
-//assigns the currentPlayer value to the created players (p1,p2)
-if (currentPlayer=1) {
-    currentPlayer= p1
-} else {
-    currentPlayer= p2
+    
+    updateCell(this, cellIndex);
+    checkWinner()
 }
 
+function updateCell(cell, index) {
+    options[index] - currentPlayer;
 
+}
 
+function changePlayer() {
 
-// determine outcome 
+}
 
-//display outcome
+function checkWinner() {
 
-//reset button
+}
 
-//add clickevent
+function restartGame() {
 
-//connect ui
-
+}
